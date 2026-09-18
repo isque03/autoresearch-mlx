@@ -1,2 +1,3 @@
 commit	val_bpb	memory_gb	status	description
 06099f2	1.475049	8.4	keep	baseline (this hardware, current train.py: depth 4, batch 2^16, matrix_lr 0.04, + mid-training monitoring)
+ee4ec7c	1.425118	7.0	keep	remove logit softcap (15*tanh(logits/15))
