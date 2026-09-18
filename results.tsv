@@ -6,3 +6,7 @@ cfe0e12	1.417481	6.9	discard	increase matrix LR to 0.06
 e514832	1.355217	6.9	discard	lower weight decay to 0.1
 acdeb09	1.350205	6.7	discard	MLP expansion 4x -> 3x
 cf7d8f7	1.618490	10.5	discard	depth 4 -> 6
+b266244	1.341363	6.3	keep	depth 4 -> 3
+3092c4d	1.393834	4.9	discard	depth 3 -> 2
+37fcef9	1.457107	7.6	discard	aspect ratio 64 -> 96 (wider)
+8abbd5a	1.353991	5.3	discard	aspect ratio 64 -> 32 (narrower)
