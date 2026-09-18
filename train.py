@@ -386,6 +386,29 @@ DEVICE_BATCH_SIZE = 16
 FINAL_EVAL_BATCH_SIZE = 256
 STARTUP_EXCLUDE_STEPS = 1
 
+# Mid-training monitoring (nanochat-style: periodic bpb + fixed-prompt samples,
+# printed as real log lines instead of overwriting one \r line, so progress
+# stays visible in scrollback).
+EVAL_EVERY = 100
+SAMPLE_EVERY = 100
+SAMPLE_PROMPTS = (
+    "The capital of France is",
+    "The chemical symbol of gold is",
+    "If yesterday was Friday, then tomorrow will be",
+    "The opposite of hot is",
+    "My favorite color is",
+)
+
+
+def sample_prompts(model, tokenizer, max_new_tokens=16):
+    for prompt in SAMPLE_PROMPTS:
+        ids = list(tokenizer.encode(prompt, prepend=tokenizer.get_bos_token_id()))
+        for _ in range(max_new_tokens):
+            logits = model(mx.array([ids]))
+            next_id = int(mx.argmax(logits[0, -1]).item())
+            ids.append(next_id)
+        print(f"sample: {tokenizer.decode(ids)!r}")
+
 
 def get_lr_multiplier(progress):
     if progress < WARMUP_RATIO:
@@ -490,12 +513,17 @@ while True:
     remaining = max(0.0, TIME_BUDGET - total_training_time)
 
     print(
-        f"\rstep {step:05d} ({pct_done:.1f}%) | loss: {debiased_smooth_loss:.6f} | "
+        f"step {step:05d} ({pct_done:.1f}%) | loss: {debiased_smooth_loss:.6f} | "
         f"lrm: {lrm:.2f} | dt: {dt*1000:.0f}ms | tok/sec: {tok_per_sec:,} | "
-        f"epoch: {epoch} | remaining: {remaining:.0f}s    ",
-        end="",
+        f"epoch: {epoch} | remaining: {remaining:.0f}s",
         flush=True,
     )
+
+    if EVAL_EVERY > 0 and step > 0 and step % EVAL_EVERY == 0:
+        bpb = evaluate_bpb(model, tokenizer, FINAL_EVAL_BATCH_SIZE)
+        print(f"Step {step:05d} | Validation bpb: {bpb:.4f}", flush=True)
+    if SAMPLE_EVERY > 0 and step > 0 and step % SAMPLE_EVERY == 0:
+        sample_prompts(model, tokenizer)
 
     if step == 0:
         gc.collect()
@@ -507,8 +535,6 @@ while True:
     step += 1
     if step >= STARTUP_EXCLUDE_STEPS and total_training_time >= TIME_BUDGET:
         break
-
-print()
 t_train = time.time()
 print(f"Training completed in {t_train - t_compiled:.1f}s")
 
