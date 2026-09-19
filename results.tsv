@@ -135,3 +135,5 @@ aa4cb9f	1.241871	7.0	discard	matrix init scale 0.7x -> 0.75x
 085cf0b	1.242779	7.0	discard	startup exclude steps 1 -> 0
 ff7a3c4	1.347690	8.1	discard	nGPT retuned per paper defaults (alpha_init=1/n_layer, no WD, no warmup) - barely moved, Muon+hard-renorm likely fundamentally conflict
 d62b949	1.249133	6.4	discard	re-check depth 3 with full current recipe
+73d19be	1.238476	7.0	keep	small weight decay on wte (0.001) and value_embeds (0.002), per community finding (karpathy/autoresearch discussion #43)
+1f0cdfa	1.240412	7.0	discard	RoPE base 10000 -> 200000, per community finding (discussion #32) - doesn't transfer to our tiny/short-seq regime

@@ -270,14 +270,14 @@ class AdamW:
                     "lr": embedding_lr * dmodel_lr_scale,
                     "betas": adam_betas,
                     "eps": 1e-10,
-                    "weight_decay": 0.0,
+                    "weight_decay": 0.001,
                 }
             elif "value_embeds" in path:
                 self.param_config[path] = {
                     "lr": embedding_lr * dmodel_lr_scale,
                     "betas": adam_betas,
                     "eps": 1e-10,
-                    "weight_decay": 0.0,
+                    "weight_decay": 0.002,
                 }
             elif "lm_head" in path:
                 self.param_config[path] = {
