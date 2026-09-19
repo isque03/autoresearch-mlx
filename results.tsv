@@ -10,3 +10,4 @@ b266244	1.341363	6.3	keep	depth 4 -> 3
 3092c4d	1.393834	4.9	discard	depth 3 -> 2
 37fcef9	1.457107	7.6	discard	aspect ratio 64 -> 96 (wider)
 8abbd5a	1.353991	5.3	discard	aspect ratio 64 -> 32 (narrower)
+59dc484	1.336186	4.0	discard	halve total batch size to 2^14 (device batch 8)
