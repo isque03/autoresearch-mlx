@@ -228,6 +228,24 @@ class GPT(nn.Module):
         return mx.sum(ce) / denom
 
 
+def zeropower_via_newtonschulz5(grad, steps=5):
+    """Orthogonalize a matrix via quintic Newton-Schulz iteration (Muon, arXiv:2410.21265).
+    Approximates the U V^T polar factor of grad without computing an SVD."""
+    a, b, c = 3.4445, -4.7750, 2.0315
+    x = grad.astype(mx.bfloat16)
+    transposed = x.shape[0] > x.shape[1]
+    if transposed:
+        x = x.T
+    x = x / (mx.linalg.norm(x) + 1e-7)
+    for _ in range(steps):
+        a_mat = x @ x.T
+        b_mat = b * a_mat + c * (a_mat @ a_mat)
+        x = a * x + b_mat @ x
+    if transposed:
+        x = x.T
+    return x
+
+
 class AdamW:
     def __init__(self, model, unembedding_lr, embedding_lr, matrix_lr, weight_decay, adam_betas, scalar_lr):
         self.param_config = {}
@@ -241,8 +259,8 @@ class AdamW:
             if "blocks" in path and param.ndim == 2:
                 self.param_config[path] = {
                     "lr": matrix_lr,
-                    "betas": adam_betas,
-                    "eps": 1e-10,
+                    "muon": True,
+                    "momentum": 0.95,
                     "weight_decay": weight_decay,
                 }
             elif "wte" in path:
@@ -306,7 +324,27 @@ class AdamW:
         else:
             setattr(obj, last, value)
 
+    def _muon_step(self, path, grad, param, config):
+        grad_f32 = grad.astype(mx.float32)
+        param_f32 = param.astype(mx.float32)
+        lr = config["lr"]
+        momentum = config["momentum"]
+        weight_decay = config["weight_decay"]
+
+        if path not in self.adam_state:
+            self.adam_state[path] = {"buf": mx.zeros_like(grad_f32)}
+        state = self.adam_state[path]
+        state["buf"] = momentum * state["buf"] + (1 - momentum) * grad_f32
+        update = zeropower_via_newtonschulz5(state["buf"]).astype(mx.float32)
+        scale = max(1.0, param.shape[0] / param.shape[1]) ** 0.5
+        param_f32 = param_f32 * (1 - lr * weight_decay)
+        param_f32 = param_f32 - lr * scale * update
+        return param_f32.astype(param.dtype)
+
     def _step(self, path, grad, param, config):
+        if config.get("muon"):
+            return self._muon_step(path, grad, param, config)
+
         grad_f32 = grad.astype(mx.float32)
         param_f32 = param.astype(mx.float32)
         lr = config["lr"]
@@ -354,7 +392,7 @@ class AdamW:
     def state(self):
         arrays = []
         for state in self.adam_state.values():
-            arrays.extend([state["m"], state["v"]])
+            arrays.extend(state.values())
         return arrays
 
 

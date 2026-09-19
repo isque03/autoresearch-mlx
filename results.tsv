@@ -18,3 +18,4 @@ dbdb5e0	1.321969	6.2	discard	increase embedding LR 0.6 -> 0.9
 436ab8b	1.322493	6.2	discard	double unembedding LR 0.004 -> 0.008
 d513ddd	1.314214	6.2	keep	all-long attention windows (simplification, no sliding window)
 80dd596	1.330470	6.6	discard	more heads, head_dim 128 -> 64
+bb8ce67	1.269989	6.2	keep	Muon optimizer (Newton-Schulz orthogonalized momentum) for matrix params, AdamW kept for embeddings/scalars
