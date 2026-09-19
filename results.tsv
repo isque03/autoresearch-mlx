@@ -62,3 +62,15 @@ d37568d	1.255194	6.2	discard	RoPE traditional=False (non-interleaved rotation)
 cb39a90	1.251086	6.2	keep	x0_lambda init 0.1 -> 0.2
 fb8a823	1.251947	6.2	discard	x0_lambda init 0.2 -> 0.3
 de23352	1.252124	6.2	discard	re-check scalar LR 0.5 -> 0.6 with new x0_lambda init
+33b3f07	1.251018	6.2	keep	resid_lambda LR multiplier 0.01 -> 0.02
+5ba5dcd	1.251156	6.2	discard	resid_lambda LR multiplier 0.02 -> 0.04
+e600d1c	1.251712	6.2	discard	x0_lambda beta1 0.96 -> 0.9
+a352449	1.270005	12.7	discard	EMA of weights over final 20% of training (worse + memory blowup)
+e786df6	1.253173	6.2	discard	resid_lambda init 1.0 -> 0.9
+50eb588	1.251135	6.2	discard	VE gate channels 32 -> 64 (no improvement, noise)
+8d60094	1.251783	6.2	discard	startup exclude steps 1 -> 2
+c5e5122	1.251374	6.2	discard	final LR floor 0.05 -> 0.06
+20a000c	1.252517	6.2	discard	global gradient norm clipping (max norm 1.0)
+d2b3511	1.258657	6.2	discard	remove Muon aspect-ratio scale correction (simplification)
+ffb3f48	1.273035	6.1	discard	intermediate width, head_dim 128 -> 96
+d19af72	1.259224	6.2	discard	small non-zero init for attn c_proj (was zero)

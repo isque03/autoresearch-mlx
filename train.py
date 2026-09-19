@@ -288,7 +288,7 @@ class AdamW:
                 }
             elif "resid_lambdas" in path:
                 self.param_config[path] = {
-                    "lr": scalar_lr * 0.01,
+                    "lr": scalar_lr * 0.02,
                     "betas": adam_betas,
                     "eps": 1e-10,
                     "weight_decay": 0.0,
