@@ -40,3 +40,7 @@ ece8aff	1.259517	6.2	keep	Muon LR 0.02 -> 0.025
 999de92	1.256381	6.2	keep	re-check Muon LR 0.04 with tuned weight decay
 39a5548	1.258217	6.2	discard	Muon LR 0.04 -> 0.05
 dfda22d	1.254252	6.2	keep	Muon momentum 0.95 -> 0.92
+2ed7388	1.253812	6.2	keep	Muon momentum 0.92 -> 0.88
+c56be55	1.254953	6.2	discard	Muon momentum 0.88 -> 0.8
+f8bd5c7	1.256614	6.2	discard	scalar LR 0.5 -> 0.7
+c2648fa	1.254447	6.2	discard	AdamW beta2 0.95 -> 0.98 (embeddings/unembedding)
