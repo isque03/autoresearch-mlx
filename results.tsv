@@ -107,3 +107,12 @@ afdc644	1.300426	10.4	discard	re-check depth 6 with full accumulated tuning
 0c17186	1.242139	7.0	keep	re-check weight decay 0.03 with new init scale
 445c34b	1.244075	7.0	discard	weight decay 0.03 -> 0.01
 e50d559	1.243606	7.0	discard	re-check Muon LR 0.06 with new init/wd
+d8f6713	1.241936	7.0	keep	re-check x0_lambda 0.25 with new init/wd
+e861f04	1.244100	7.0	discard	x0_lambda 0.25 -> 0.22
+437b2ce	1.245968	7.0	discard	embedding init scale 1.0 -> 1.3
+bb82837	1.243993	7.0	discard	RoPE base 10000 -> 50000
+45ab0f9	1.243026	7.0	discard	re-check warmdown 0.9 with accumulated tuning
+ece539a	1.242389	7.0	discard	re-check final LR floor 0.08 with accumulated tuning
+165e02b	1.244043	7.0	discard	Newton-Schulz steps 5 -> 4 (simplification)
+6fffae1	1.242231	7.0	discard	AdamW beta1 0.8 -> 0.75
+9a23ee8	1.244537	7.0	discard	dmodel LR scale exponent -0.5 -> -0.4
