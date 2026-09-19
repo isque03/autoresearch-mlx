@@ -88,7 +88,7 @@ class CausalSelfAttention(nn.Module):
 
         if ve is not None and self.ve_gate is not None:
             ve = ve.reshape(batch_size, seq_len, self.n_kv_head, self.head_dim)
-            gate = 2 * mx.sigmoid(self.ve_gate(x[..., : self.ve_gate_channels]))
+            gate = 1.5 * mx.sigmoid(self.ve_gate(x[..., : self.ve_gate_channels]))
             v = v + mx.expand_dims(gate, axis=-1) * ve
 
         q = q.transpose(0, 2, 1, 3)

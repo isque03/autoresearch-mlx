@@ -121,3 +121,17 @@ ece539a	1.242389	7.0	discard	re-check final LR floor 0.08 with accumulated tunin
 580558b	1.243705	7.0	discard	re-check unembedding LR 0.005 with accumulated tuning
 103b6d6	1.242638	7.0	discard	weight decay 0.03 -> 0.02
 27a6b8e	1.242199	7.0	discard	resid_lambda LR multiplier 0.02 -> 0.025
+1a07422	1.240571	7.0	keep	VE gate multiplier 2 -> 1.5
+802e688	1.240917	7.0	discard	VE gate multiplier 1.5 -> 1.0
+176576e	1.240840	7.0	discard	VE gate multiplier 1.5 -> 1.7
+b8fe6d1	1.241365	7.0	discard	VE embedding init matches wte convention (normal, scale 1.0)
+50d22e4	1.240902	7.0	discard	VE gate channels 32 -> 16 (simplification, no improvement)
+4fc6902	1.240844	7.0	discard	re-check final LR floor 0.06 with VE tuning
+aa4cb9f	1.241871	7.0	discard	matrix init scale 0.7x -> 0.75x
+683e0d6	1.249726	7.5	discard	MLP activation SiLU -> GELU (tanh approx)
+6ce3d86	1.242318	7.0	discard	x0_lambda beta1 0.96 -> 0.98
+2ed21c4	1.242116	7.0	discard	U-Net-style skip connections between mirrored blocks (too shallow at depth 4)
+5d0ff48	1.348105	8.1	discard	nGPT (arXiv:2410.01131) - hypersphere normalization + eigen-LR residuals; trains cleanly but needs its own LR/alpha retune, worse untuned
+085cf0b	1.242779	7.0	discard	startup exclude steps 1 -> 0
+ff7a3c4	1.347690	8.1	discard	nGPT retuned per paper defaults (alpha_init=1/n_layer, no WD, no warmup) - barely moved, Muon+hard-renorm likely fundamentally conflict
+d62b949	1.249133	6.4	discard	re-check depth 3 with full current recipe
