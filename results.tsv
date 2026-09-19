@@ -104,3 +104,6 @@ e5f74a2	1.243034	7.0	keep	reduce matrix init scale by 0.7x
 268ccb4	1.243847	7.0	discard	matrix init scale 0.7x -> 0.85x
 3274112	1.243101	7.0	discard	lm_head init scale 0.001 -> 0.0005 (no improvement, noise)
 afdc644	1.300426	10.4	discard	re-check depth 6 with full accumulated tuning
+0c17186	1.242139	7.0	keep	re-check weight decay 0.03 with new init scale
+445c34b	1.244075	7.0	discard	weight decay 0.03 -> 0.01
+e50d559	1.243606	7.0	discard	re-check Muon LR 0.06 with new init/wd
