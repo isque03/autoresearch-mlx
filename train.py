@@ -277,7 +277,7 @@ class AdamW:
                     "lr": embedding_lr * dmodel_lr_scale,
                     "betas": adam_betas,
                     "eps": 1e-10,
-                    "weight_decay": 0.002,
+                    "weight_decay": 0.003,
                 }
             elif "lm_head" in path:
                 self.param_config[path] = {
