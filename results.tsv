@@ -74,3 +74,6 @@ c5e5122	1.251374	6.2	discard	final LR floor 0.05 -> 0.06
 d2b3511	1.258657	6.2	discard	remove Muon aspect-ratio scale correction (simplification)
 ffb3f48	1.273035	6.1	discard	intermediate width, head_dim 128 -> 96
 d19af72	1.259224	6.2	discard	small non-zero init for attn c_proj (was zero)
+52b9b75	1.244853	7.0	keep	re-check depth 4 with full accumulated tuning
+cacd849	1.275498	9.4	discard	depth 4 -> 5
+ad6ce31	1.259440	7.0	discard	re-check batch size 2^16 at depth 4
