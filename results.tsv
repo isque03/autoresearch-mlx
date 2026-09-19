@@ -59,3 +59,6 @@ af8f83d	1.252214	6.2	discard	weight decay 0.05 -> 0.03 (no improvement, noise)
 48a1390	1.254159	6.4	discard	MLP expansion 4x -> 5x
 969530f	1.253081	6.2	discard	Nesterov-style Muon update
 d37568d	1.255194	6.2	discard	RoPE traditional=False (non-interleaved rotation)
+cb39a90	1.251086	6.2	keep	x0_lambda init 0.1 -> 0.2
+fb8a823	1.251947	6.2	discard	x0_lambda init 0.2 -> 0.3
+de23352	1.252124	6.2	discard	re-check scalar LR 0.5 -> 0.6 with new x0_lambda init
