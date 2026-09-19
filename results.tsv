@@ -44,3 +44,18 @@ dfda22d	1.254252	6.2	keep	Muon momentum 0.95 -> 0.92
 c56be55	1.254953	6.2	discard	Muon momentum 0.88 -> 0.8
 f8bd5c7	1.256614	6.2	discard	scalar LR 0.5 -> 0.7
 c2648fa	1.254447	6.2	discard	AdamW beta2 0.95 -> 0.98 (embeddings/unembedding)
+3d779b1	1.252206	6.2	keep	final LR floor 0.0 -> 0.05
+2ed87cd	1.253859	6.2	discard	final LR floor 0.05 -> 0.1
+b11abe0	1.252304	6.2	discard	re-check warmdown 0.8 -> 0.6 with new LR floor
+f182e12	1.267711	6.2	discard	route lm_head through Muon instead of AdamW
+72f995a	1.262840	6.1	discard	remove QK-norm (simplification)
+dccd57d	1.253199	6.2	discard	halve embedding init scale 1.0 -> 0.5
+7434b92	1.254939	6.2	discard	weight decay 0.05 -> 0.08
+af8f83d	1.252214	6.2	discard	weight decay 0.05 -> 0.03 (no improvement, noise)
+0974350	1.253152	6.2	discard	AdamW beta1 0.8 -> 0.85
+3d2bb41	1.252998	7.3	discard	re-check wider model (aspect ratio 96) with Muon
+5f3a7aa	1.252224	6.2	discard	Muon LR 0.04 -> 0.045 (no improvement, noise)
+43d9f3f	1.264086	6.0	discard	single-head attention, head_dim 128 -> 256
+48a1390	1.254159	6.4	discard	MLP expansion 4x -> 5x
+969530f	1.253081	6.2	discard	Nesterov-style Muon update
+d37568d	1.255194	6.2	discard	RoPE traditional=False (non-interleaved rotation)
