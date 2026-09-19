@@ -37,3 +37,5 @@ c34ae9c	1.280894	6.2	discard	re-check batch size 2^16 with Muon
 ece8aff	1.259517	6.2	keep	Muon LR 0.02 -> 0.025
 04cb3a3	1.259040	6.2	keep	Muon LR 0.025 -> 0.03
 986599e	1.256784	6.2	keep	Muon LR 0.03 -> 0.035
+999de92	1.256381	6.2	keep	re-check Muon LR 0.04 with tuned weight decay
+39a5548	1.258217	6.2	discard	Muon LR 0.04 -> 0.05
