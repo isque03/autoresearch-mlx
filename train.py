@@ -5,8 +5,10 @@ Usage: uv run train.py
 """
 
 import gc
+import glob
 import math
 import os
+import subprocess
 import time
 from dataclasses import dataclass
 
@@ -595,3 +597,25 @@ print(f"total_tokens_M:   {total_tokens / 1e6:.1f}")
 print(f"num_steps:        {step}")
 print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
+
+# Checkpoints: keep the 5 best (lowest val_bpb) model weights on disk, named
+# by commit + val_bpb so a checkpoint is only ever loaded against the exact
+# train.py (architecture) that produced it.
+checkpoint_dir = "checkpoints"
+os.makedirs(checkpoint_dir, exist_ok=True)
+existing = sorted(
+    glob.glob(os.path.join(checkpoint_dir, "*.safetensors")),
+    key=lambda p: float(os.path.basename(p).rsplit("_", 1)[1].removesuffix(".safetensors")),
+)
+if len(existing) < 5 or val_bpb < float(os.path.basename(existing[-1]).rsplit("_", 1)[1].removesuffix(".safetensors")):
+    commit = subprocess.run(
+        ["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, check=True
+    ).stdout.strip()
+    ckpt_path = os.path.join(checkpoint_dir, f"{commit}_{val_bpb:.4f}.safetensors")
+    mx.save_safetensors(ckpt_path, dict(tree_flatten(model.parameters())))
+    print(f"Checkpoint saved: {ckpt_path}")
+    existing.append(ckpt_path)
+    existing.sort(key=lambda p: float(os.path.basename(p).rsplit("_", 1)[1].removesuffix(".safetensors")))
+    for stale in existing[5:]:
+        os.remove(stale)
+        print(f"Checkpoint pruned: {stale}")

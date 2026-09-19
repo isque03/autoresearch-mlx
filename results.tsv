@@ -28,3 +28,9 @@ bb58d2f	1.264774	6.2	discard	re-check full anneal (warmdown 1.0) with Muon
 01895c8	1.266162	7.0	discard	re-check depth 4 with Muon
 d4947e8	1.267470	6.2	discard	Newton-Schulz steps 5 -> 6
 90eb2a8	1.267839	6.2	discard	Muon LR 0.02 -> 0.015
+07f4832	1.261690	6.2	keep	add checkpoint saving (top-5 by val_bpb, per program.md); no logic change, re-run confirms noise floor
+5cfee82	1.275908	6.2	discard	Muon momentum 0.95 -> 0.98
+9181556	1.280727	7.9	discard	SwiGLU-style gated MLP instead of plain SiLU
+1967c95	1.278176	6.3	discard	remove value embeddings (simplification)
+6ce8580	1.262017	6.2	discard	lower embedding LR 0.6 -> 0.4
+c34ae9c	1.280894	6.2	discard	re-check batch size 2^16 with Muon
