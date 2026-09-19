@@ -39,3 +39,4 @@ ece8aff	1.259517	6.2	keep	Muon LR 0.02 -> 0.025
 986599e	1.256784	6.2	keep	Muon LR 0.03 -> 0.035
 999de92	1.256381	6.2	keep	re-check Muon LR 0.04 with tuned weight decay
 39a5548	1.258217	6.2	discard	Muon LR 0.04 -> 0.05
+dfda22d	1.254252	6.2	keep	Muon momentum 0.95 -> 0.92

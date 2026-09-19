@@ -262,7 +262,7 @@ class AdamW:
                 self.param_config[path] = {
                     "lr": matrix_lr,
                     "muon": True,
-                    "momentum": 0.95,
+                    "momentum": 0.92,
                     "weight_decay": weight_decay,
                 }
             elif "wte" in path:
