@@ -16,3 +16,5 @@ c6c9302	1.314643	6.2	keep	longer LR anneal, warmdown 0.5 -> 0.8
 dbdb5e0	1.321969	6.2	discard	increase embedding LR 0.6 -> 0.9
 5204c36	1.314436	6.2	keep	add small LR warmup 0.0 -> 0.05
 436ab8b	1.322493	6.2	discard	double unembedding LR 0.004 -> 0.008
+d513ddd	1.314214	6.2	keep	all-long attention windows (simplification, no sliding window)
+80dd596	1.330470	6.6	discard	more heads, head_dim 128 -> 64
