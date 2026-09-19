@@ -36,3 +36,4 @@ d4947e8	1.267470	6.2	discard	Newton-Schulz steps 5 -> 6
 c34ae9c	1.280894	6.2	discard	re-check batch size 2^16 with Muon
 ece8aff	1.259517	6.2	keep	Muon LR 0.02 -> 0.025
 04cb3a3	1.259040	6.2	keep	Muon LR 0.025 -> 0.03
+986599e	1.256784	6.2	keep	Muon LR 0.03 -> 0.035
