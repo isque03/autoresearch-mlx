@@ -83,3 +83,7 @@ ad6ce31	1.259440	7.0	discard	re-check batch size 2^16 at depth 4
 81e0a39	1.260561	8.4	discard	wider width at depth 4, aspect ratio 64 -> 96
 51f7fcc	1.245834	7.0	discard	re-check warmdown 0.6 at depth 4
 a294685	1.248941	7.0	discard	re-check weight decay 0.08 at depth 4
+ad1eeb2	1.244011	7.0	keep	re-check x0_lambda init 0.3 at depth 4
+04010b4	1.244259	7.0	discard	x0_lambda init 0.3 -> 0.4
+eb50211	1.244301	7.0	discard	Muon LR 0.05 -> 0.045 (no improvement, noise)
+24ea030	1.244779	7.0	discard	re-check resid_lambda LR multiplier 0.03 at depth 4
