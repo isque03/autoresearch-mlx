@@ -116,3 +116,8 @@ ece539a	1.242389	7.0	discard	re-check final LR floor 0.08 with accumulated tunin
 165e02b	1.244043	7.0	discard	Newton-Schulz steps 5 -> 4 (simplification)
 6fffae1	1.242231	7.0	discard	AdamW beta1 0.8 -> 0.75
 9a23ee8	1.244537	7.0	discard	dmodel LR scale exponent -0.5 -> -0.4
+59b3626	1.241698	7.0	keep	re-check embedding LR 0.7 with accumulated tuning
+4f0be22	1.242665	7.0	discard	embedding LR 0.7 -> 0.8
+580558b	1.243705	7.0	discard	re-check unembedding LR 0.005 with accumulated tuning
+103b6d6	1.242638	7.0	discard	weight decay 0.03 -> 0.02
+27a6b8e	1.242199	7.0	discard	resid_lambda LR multiplier 0.02 -> 0.025
