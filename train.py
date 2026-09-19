@@ -149,7 +149,7 @@ class GPT(nn.Module):
 
     def init_weights(self):
         n_embd = self.config.n_embd
-        scale = 3**0.5 * n_embd**-0.5
+        scale = 3**0.5 * n_embd**-0.5 * 0.7
 
         self.wte.weight = (mx.random.normal(self.wte.weight.shape) * 1.0).astype(mx.bfloat16)
         self.lm_head.weight = (mx.random.normal(self.lm_head.weight.shape) * 0.001).astype(mx.bfloat16)

@@ -99,3 +99,8 @@ af32e24	1.244375	7.0	discard	re-check scalar LR 0.4 at depth 4
 1a468c5	1.244772	7.0	discard	re-check unembedding LR 0.006 at depth 4
 9372f13	1.250659	7.1	discard	value embeddings on all layers (was alternating)
 be004e2	1.254081	4.0	discard	re-check smaller batch 2^14 at depth 4
+e5f74a2	1.243034	7.0	keep	reduce matrix init scale by 0.7x
+43e8b77	1.245482	7.0	discard	matrix init scale 0.7x -> 0.5x
+268ccb4	1.243847	7.0	discard	matrix init scale 0.7x -> 0.85x
+3274112	1.243101	7.0	discard	lm_head init scale 0.001 -> 0.0005 (no improvement, noise)
+afdc644	1.300426	10.4	discard	re-check depth 6 with full accumulated tuning
