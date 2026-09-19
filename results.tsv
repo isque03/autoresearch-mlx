@@ -137,3 +137,9 @@ ff7a3c4	1.347690	8.1	discard	nGPT retuned per paper defaults (alpha_init=1/n_lay
 d62b949	1.249133	6.4	discard	re-check depth 3 with full current recipe
 73d19be	1.238476	7.0	keep	small weight decay on wte (0.001) and value_embeds (0.002), per community finding (karpathy/autoresearch discussion #43)
 1f0cdfa	1.240412	7.0	discard	RoPE base 10000 -> 200000, per community finding (discussion #32) - doesn't transfer to our tiny/short-seq regime
+b7dd5ca	1.234784	7.0	keep	shorter sliding windows (1/8 context) + SSSL pattern, per community finding (discussion #32)
+e6432fc	1.238636	7.0	discard	sliding window 1/8 -> 1/16 context
+fc7e1ec	1.238841	7.0	discard	sliding window 1/8 -> 1/4 context
+553016b	1.237364	7.0	discard	RoPE base 10000 -> 50000 (gradual step per discussion #32) - still worse, doesn't transfer
+5042168	1.234990	7.0	discard	small lm_head weight decay 0.01, per community finding (discussion #43) - flat, no improvement
+6ea99f3	1.239549	7.0	discard	re-check embedding LR 0.9 with embedding WD present, per community finding (discussion #43)
