@@ -87,3 +87,15 @@ ad1eeb2	1.244011	7.0	keep	re-check x0_lambda init 0.3 at depth 4
 04010b4	1.244259	7.0	discard	x0_lambda init 0.3 -> 0.4
 eb50211	1.244301	7.0	discard	Muon LR 0.05 -> 0.045 (no improvement, noise)
 24ea030	1.244779	7.0	discard	re-check resid_lambda LR multiplier 0.03 at depth 4
+6754446	1.243970	7.0	keep	re-check Muon momentum 0.85 at depth 4
+dbb22ee	1.244696	7.0	discard	re-check embedding LR 0.5 at depth 4
+8df535d	1.244506	7.0	discard	Muon momentum 0.85 -> 0.82
+ab3a155	1.244530	7.0	discard	re-check final LR floor 0.03 at depth 4
+455fbbf	1.245904	6.8	discard	re-check MLP expansion 3x at depth 4
+af32e24	1.244375	7.0	discard	re-check scalar LR 0.4 at depth 4
+248ea90	1.263554	8.0	discard	re-check more heads (head_dim 64) at depth 4
+393fd00	1.246713	7.0	discard	warmup ratio 0.05 -> 0.1
+348ac1c	1.244855	7.0	discard	warmup ratio 0.05 -> 0.03
+1a468c5	1.244772	7.0	discard	re-check unembedding LR 0.006 at depth 4
+9372f13	1.250659	7.1	discard	value embeddings on all layers (was alternating)
+be004e2	1.254081	4.0	discard	re-check smaller batch 2^14 at depth 4
