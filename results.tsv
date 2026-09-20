@@ -146,3 +146,4 @@ fc7e1ec	1.238841	7.0	discard	sliding window 1/8 -> 1/4 context
 788e8e6	1.234561	7.0	keep	VE weight decay 0.002 -> 0.003, matching community-found optimum (discussion #43)af4a5eb	1.234409		keep	matrix weight_decay 0.03 -> 0.027, new best
 6020966	1.234783		keep	infra: disable EVAL_EVERY/SAMPLE_EVERY (100->0), quality-neutral (noise vs 1.234409), cuts wasted wall-clock overhead per run - faster iteration going forward
 2b10954	1.234185		keep	attention sink (StreamingLLM) - sliding-window layers always attend to token 0, new best
+0827a2b	1.233790		keep	final LR floor 0.045, new best
