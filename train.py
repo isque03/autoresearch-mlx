@@ -428,8 +428,12 @@ STARTUP_EXCLUDE_STEPS = 1
 # Mid-training monitoring (nanochat-style: periodic bpb + fixed-prompt samples,
 # printed as real log lines instead of overwriting one \r line, so progress
 # stays visible in scrollback).
-EVAL_EVERY = 100
-SAMPLE_EVERY = 100
+# Mid-training eval/sampling doesn't count against TIME_BUDGET (the training
+# loop's total_training_time counter excludes it), so it's pure real-wall-clock
+# overhead with zero effect on val_bpb or step count. Disabled to speed up
+# each `uv run train.py` invocation for faster iteration in this loop.
+EVAL_EVERY = 0
+SAMPLE_EVERY = 0
 SAMPLE_PROMPTS = (
     "The capital of France is",
     "The chemical symbol of gold is",

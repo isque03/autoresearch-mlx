@@ -144,3 +144,4 @@ fc7e1ec	1.238841	7.0	discard	sliding window 1/8 -> 1/4 context
 5042168	1.234990	7.0	discard	small lm_head weight decay 0.01, per community finding (discussion #43) - flat, no improvement
 6ea99f3	1.239549	7.0	discard	re-check embedding LR 0.9 with embedding WD present, per community finding (discussion #43)
 788e8e6	1.234561	7.0	keep	VE weight decay 0.002 -> 0.003, matching community-found optimum (discussion #43)af4a5eb	1.234409		keep	matrix weight_decay 0.03 -> 0.027, new best
+6020966	1.234783		keep	infra: disable EVAL_EVERY/SAMPLE_EVERY (100->0), quality-neutral (noise vs 1.234409), cuts wasted wall-clock overhead per run - faster iteration going forward
