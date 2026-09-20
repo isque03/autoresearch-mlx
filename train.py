@@ -48,10 +48,14 @@ def create_additive_causal_mask(seq_len, dtype=mx.float32):
 
 
 def create_sliding_window_mask(seq_len, window_size, dtype=mx.float32):
+    # Attention sink (StreamingLLM): always allow attending to token 0 even
+    # when it falls outside the local window. Still a static additive mask,
+    # so the fused SDPA kernel keeps working at full speed.
     indices = mx.arange(seq_len)
     causal = indices[None, :] > indices[:, None]
     too_far = (indices[:, None] - indices[None, :]) >= window_size
-    blocked = causal | too_far
+    is_sink = indices[None, :] == 0
+    blocked = (causal | too_far) & ~is_sink
     return mx.where(blocked, mx.array(float("-inf"), dtype=dtype), mx.array(0.0, dtype=dtype))
 
 
