@@ -10,3 +10,14 @@ build-2-closeout.md
 
 # rigor.py runtime state
 rigor_ledger.jsonl
+
+# checkpoint weights (large binaries, not source)
+checkpoints/
+checkpoints_extended/
+chatsft_checkpoints/
+pretrain_for_sft/
+
+# local tooling/scratch, not project source
+.claude/
+.review/
+knowledge/
